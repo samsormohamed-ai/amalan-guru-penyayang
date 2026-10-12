@@ -1,0 +1,16 @@
+{
+  "name": "Amalan Guru Penyayang SK Jawi",
+  "short_name": "AGP SK Jawi",
+  "description": "Laporan Amalan Guru Penyayang (AGP) Sekolah Kebangsaan Jawi",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#13235b",
+  "theme_color": "#13235b",
+  "lang": "ms",
+  "icons": [
+    { "src": "icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" }
+  ]
+}

@@ -1,0 +1,62 @@
+AMALAN GURU PENYAYANG (AGP) SK JAWI - VERSI DALAM TALIAN 2.0
+=============================================================
+
+SUDAH PASANG VERSI 1? NAIK TARAF SAHAJA:
+1. Apps Script: gantikan isi Code.gs dan Index dengan fail baharu > Save.
+2. Run fungsi "setup" sekali (lajur baharu & tab "Senarai PRS" ditambah;
+   data lama kekal).
+3. Deploy > Manage deployments > ikon pensel > Version: New version > Deploy.
+   URL dan ikon telefon kekal sama.
+
+SENARAI PRS (CSV)
+- Tab Analisis > "Muat naik CSV PRS". Lajur: Nama, Kelas (Bil boleh ada).
+  Contoh: Templat_Senarai_PRS.csv. Dari Excel/Google Sheet: File > Download > CSV.
+- Senarai disimpan dalam tab "Senarai PRS" dan boleh juga diedit terus di situ.
+
+
+BAHAGIAN 1: GOOGLE SHEET + APPS SCRIPT
+1. Buka sheets.new dan namakan fail "Laporan AGP SK Jawi".
+2. Klik Extensions > Apps Script.
+3. Padam kod asal dalam Code.gs, kemudian tampal semua isi fail Code.gs.
+4. Klik ikon + di sebelah "Files" > HTML > namakan "Index" (tanpa .html).
+   Padam isi asal dan tampal semua isi fail Index.html.
+5. Klik Save (ikon disket).
+6. Pada menu fungsi di atas, pilih "setup" > klik Run.
+   Klik Review permissions > pilih akaun Google > Advanced > Go to ... (unsafe) > Allow.
+   Tab "Laporan AGP" dan "Tetapan" akan dibina, serta folder Drive
+   "AGP SK Jawi - Gambar & Tandatangan".
+7. Buka tab "Tetapan" dalam Sheet. Isi PIN (contoh 2468) di sel B2.
+   Kosongkan B2 jika tidak mahu kunci PIN.
+8. Kembali ke Apps Script > Deploy > New deployment > ikon gear > Web app
+      Description   : AGP SK Jawi
+      Execute as    : Me
+      Who has access: Anyone
+   Klik Deploy dan salin "Web app URL" (berakhir dengan /exec).
+9. Buka URL itu dan cuba simpan satu laporan.
+
+Kemas kini kod kemudian hari:
+   Deploy > Manage deployments > ikon pensel > Version: New version > Deploy
+   (URL kekal sama.)
+
+BAHAGIAN 2: IKON DI TELEFON (GITHUB PAGES)
+1. Buat repo baharu di GitHub, contoh "AGP-SKJAWI" (Public).
+2. Buka index.html dalam folder github-pages, cari baris:
+      const WEB_APP_URL = "TAMPAL_URL_WEB_APP_DI_SINI";
+   Gantikan dengan URL /exec dari langkah 8.
+3. Muat naik semua fail dalam folder github-pages:
+   index.html, manifest.json, sw.js, icon-192.png, icon-512.png, apple-touch-icon.png
+4. Settings > Pages > Branch: main / (root) > Save.
+5. Buka https://NAMA-GITHUB.github.io/AGP-SKJAWI/ di telefon:
+   Android (Chrome): menu ⋮ > Add to Home screen / Install app
+   iPhone (Safari) : Share > Add to Home Screen
+
+DI MANA DATA DISIMPAN
+- Butiran laporan  : tab "Laporan AGP" dalam Google Sheet (satu baris setiap laporan)
+- Gambar & tandatangan : folder Drive "AGP SK Jawi - Gambar & Tandatangan", ikut bulan
+- Fail gambar TIDAK dikongsi secara awam. Aplikasi memaparkannya melalui skrip.
+- Lajur ID fail Drive disembunyikan dalam Sheet. Jangan ubah lajur itu.
+
+CETAK A4
+- Tekan Cetak > pilih printer atau "Save as PDF".
+- Jika cetakan tidak keluar ketika dibuka dari ikon telefon (terutama iPhone),
+  tekan pautan "buka aplikasi dalam pelayar" pada tab Pratonton dan cetak dari situ.

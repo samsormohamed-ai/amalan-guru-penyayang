@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>AGP SK Jawi</title>
+<meta name="theme-color" content="#13235b">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="AGP SK Jawi">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" type="image/png" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<style>
+  html,body{margin:0;height:100%;background:#13235b;font-family:"Segoe UI",Roboto,Arial,sans-serif}
+  #splash{position:fixed;inset:0;display:grid;place-items:center;align-content:center;gap:14px;color:#fff;text-align:center;padding:16px}
+  #splash img{width:120px;height:120px;border-radius:50%;box-shadow:0 0 0 3px #c9962b,0 10px 30px rgba(0,0,0,.35)}
+  #splash b{font-size:1.25rem;font-family:Georgia,serif;font-weight:400}
+  #splash span{font-size:.85rem;color:#cfd6f2}
+  #app{position:fixed;left:0;right:0;bottom:0;top:env(safe-area-inset-top,0px);width:100%;height:calc(100% - env(safe-area-inset-top,0px));border:0;background:transparent;opacity:0;transition:opacity .3s}
+  #app.on{opacity:1}
+</style>
+</head>
+<body>
+<div id="splash">
+  <img src="icon-192.png" alt="">
+  <b>Amalan Guru Penyayang</b>
+  <span id="msg">Sekolah Kebangsaan Jawi · memuatkan…</span>
+</div>
+<iframe id="app" title="Amalan Guru Penyayang SK Jawi" allow="camera; clipboard-write"></iframe>
+<script>
+  /* TAMPAL URL WEB APP APPS SCRIPT (berakhir dengan /exec) DI ANTARA TANDA PETIK */
+  const WEB_APP_URL = "TAMPAL_URL_WEB_APP_DI_SINI";
+
+  const f = document.getElementById('app');
+  if (!/^https:\/\/script\.google\.com\/.+\/exec/.test(WEB_APP_URL)) {
+    document.getElementById('msg').textContent = 'URL Web App belum ditetapkan dalam index.html';
+  } else {
+    f.src = WEB_APP_URL;
+    f.addEventListener('load', () => f.classList.add('on'));
+  }
+  if ('serviceWorker' in navigator) navigator.serviceWorker.register('sw.js').catch(() => {});
+</script>
+</body>
+</html>
